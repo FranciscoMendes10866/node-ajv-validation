@@ -13,8 +13,8 @@ export const validatorFactory = (schema) => {
     }
     throw new Error(
       ajv.errorsText(
-        validateAuthData.errors?.filter((err) => err.keyword !== "if"),
-        { dataVar: "schema" } + "\n\n" + inspect(data)
+        validate.errors?.filter((err) => err.keyword !== "if"),
+        { dataVar: "schemaValidation" } + "\n\n" + inspect(data)
       )
     );
   };
