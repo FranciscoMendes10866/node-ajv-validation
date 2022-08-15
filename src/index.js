@@ -12,14 +12,10 @@ const router = new Router();
 
 app.use(koaBody());
 
-router.post("/", async (ctx, next) => {
-  try {
-    const data = authValidation.verify(ctx.request.body);
-    ctx.body = data;
-  } catch (error) {
-    next(error);
-    ctx.status = 500;
-  }
+router.post("/", async (ctx) => {
+  const body = ctx.request.body;
+  const data = authValidation.verify(body);
+  ctx.body = { data };
 });
 
 app.use(router.routes());
